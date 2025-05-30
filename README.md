@@ -1,40 +1,56 @@
-# 🗂️ My Dotfiles
+# 🌿 My Dotfiles
 
-This repository contains my personal dotfiles, which I use to set up and customize my development environment across different machines.
+This repository contains my personal dotfiles to set up and customize my development environment across different machines.
 
-## 📦 Included Configurations
+## 📦 Features
 
-- **Vim**: `~/.vimrc`
-- **Zsh**:
-  - `.zshrc` (with Powerlevel10k, autosuggestions, autocomplete, zoxide)
-- **Terminal**:
-  - Ghostty configuration in `~/.config/ghostty/`
-- (Add more as needed, e.g., `.gitconfig`, `.tmux.conf`, etc.)
+- Neovim configuration (`~/.config/nvim`)
+- Zsh configuration (`~/.zshrc`, with Powerlevel10k, autosuggestions, autocomplete, zoxide)
+- Terminal configuration (`~/.config/ghostty`)
+- Git configuration (`~/.gitconfig`)
+- Python 3.13 as the default Python version
+- Homebrew package list (`Brewfile`) for one-click setup
 
-## 💻 Usage
+## 🚀 Installation
 
-### Clone the repository
+### 1️⃣ Clone the repository
+
+In your `$HOME` directory, run:
 
 ```bash
-git clone https://github.com/yourusername/dotfiles.git ~/dotfiles
+git clone git@github.com/yourusername/dotfiles.git
+cd dotfiles
 
-Setup
+2️⃣ Create symlinks using stow
 
-# For .vimrc
-cp ~/dotfiles/.vimrc ~/.vimrc
+To symlink all configurations:
+```
+```bash
+stow .
+```
 
-# For .zshrc
-cp ~/dotfiles/.zshrc ~/.zshrc
+🐍 Python Version
 
-# For Ghostty
-cp -r ~/dotfiles/ghostty ~/.config/ghostty
+This dotfiles setup uses Python 3.13 as the default version.
+To install and set it up:
 
-## 📦 Homebrew Setup
+```bash
+brew install python@3.13
+brew link --overwrite python@3.13
+```
+Check your Python version:
+```bash
+python --version
+pip --version
+```
+🍺 Homebrew Setup
 
-This repository includes a `Brewfile` to install all necessary packages.
+This repository includes a Brewfile for easy package installation.
 
 To install all packages on a new machine:
 
 ```bash
 brew bundle --file=Brewfile
+```
+This will install all CLI tools, libraries, and applications defined in Brewfile.
 
