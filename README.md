@@ -18,7 +18,7 @@ This repository contains my personal dotfiles to set up and customize my develop
 In your `$HOME` directory, run:
 
 ```bash
-git clone git@github.com/yourusername/dotfiles.git
+git clone git@github.com/15935648a/dotfiles.git
 cd dotfiles
 ```
 
