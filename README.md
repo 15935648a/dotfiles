@@ -20,16 +20,17 @@ In your `$HOME` directory, run:
 ```bash
 git clone git@github.com/yourusername/dotfiles.git
 cd dotfiles
+```
 
-2️⃣ Create symlinks using stow
+### 2️⃣ Create symlinks using stow
 
 To symlink all configurations:
-```
 ```bash
 stow .
 ```
 
-🐍 Python Version
+
+### 🐍 Python Version
 
 This dotfiles setup uses Python 3.13 as the default version.
 To install and set it up:
@@ -43,7 +44,7 @@ Check your Python version:
 python --version
 pip --version
 ```
-🍺 Homebrew Setup
+### 🍺 Homebrew Setup
 
 This repository includes a Brewfile for easy package installation.
 
