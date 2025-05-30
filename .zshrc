@@ -125,7 +125,7 @@ alias ic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias copy='pbcopy < '
 
 alias llm='source ~/LLM-project/venv/bin/activate'
-
+alias iv='vim $(fzf -m --preview="bat --color=always {}")'
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
