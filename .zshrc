@@ -1,9 +1,19 @@
+# 防止歷史紀錄重複
+setopt HIST_IGNORE_ALL_DUPS       # 只保留最近的一次重複命令
+setopt HIST_FIND_NO_DUPS          # 搜尋歷史時忽略重複
+setopt HIST_REDUCE_BLANKS         # 移除指令前後的空白
+setopt HIST_SAVE_NO_DUPS          # 存檔時忽略重複
+
+# 其他實用歷史選項
+setopt INC_APPEND_HISTORY         # 實時將歷史新增到檔案
+setopt SHARE_HISTORY              # 多個 shell 共用歷史
+setopt EXTENDED_HISTORY           # 記錄每條命令的時間
+
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -81,7 +91,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search copyfile)
+plugins=(git zsh-autosuggestions you-should-use zsh-syntax-highlighting web-search copyfile)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,7 +120,7 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
+## Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
@@ -119,13 +129,27 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 [ -f "/Users/ans/.ghcup/env" ] && . "/Users/ans/.ghcup/env" # ghcup-env
 
-alias oj='python2.7 /Users/ans/oj-cli/oj'
 alias oop='ssh oop'
 alias ic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias copy='pbcopy < '
 
 alias llm='source ~/LLM-project/venv/bin/activate'
 alias iv='vim $(fzf -m --preview="bat --color=always {}")'
+
+alias ll='ls -alF'                             # 列出詳細目錄
+alias la='ls -a'                               # 列出隱藏檔
+alias l='ls -CF'                               # 簡短列出
+alias c='clear'                                # 清除畫面
+alias h='history'                              # 查看歷史指令
+alias ..='cd ..'                               # 上一層目錄
+alias ...='cd ../..'                           # 上兩層目錄
+alias ....='cd ../../..'                       # 上三層
+alias p='ping'                                 # 簡化 ping
+alias ip='curl ifconfig.me'                    # 查看外網 IP
+alias du1='du -h --max-depth=1'                # 查看當前目錄佔用
+alias now='date "+%Y-%m-%d %H:%M:%S"'          # 顯示當前時間
+alias please='sudo $(history -p !!)'           # 上一個指令加 sudo（超好用）
+
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
@@ -135,3 +159,6 @@ alias iv='vim $(fzf -m --preview="bat --color=always {}")'
 [[ ! -r '/Users/ans/.opam/opam-init/init.zsh' ]] || source '/Users/ans/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
  eval "$(zoxide init --cmd cd zsh)"
+ eval "$(thefuck --alias)"
+ 
+
