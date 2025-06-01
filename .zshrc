@@ -1,14 +1,15 @@
-# 防止歷史紀錄重複
-setopt HIST_IGNORE_ALL_DUPS       # 只保留最近的一次重複命令
-setopt HIST_FIND_NO_DUPS          # 搜尋歷史時忽略重複
-setopt HIST_REDUCE_BLANKS         # 移除指令前後的空白
-setopt HIST_SAVE_NO_DUPS          # 存檔時忽略重複
+# Zsh 歷史設定
+HISTFILE=~/.zsh_history
+HISTSIZE=10000          # 記憶體中的歷史上限
+SAVEHIST=10000          # 寫入檔案的歷史上限
 
-# 其他實用歷史選項
-setopt INC_APPEND_HISTORY         # 實時將歷史新增到檔案
-setopt SHARE_HISTORY              # 多個 shell 共用歷史
-setopt EXTENDED_HISTORY           # 記錄每條命令的時間
-
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -149,6 +150,8 @@ alias ip='curl ifconfig.me'                    # 查看外網 IP
 alias du1='du -h --max-depth=1'                # 查看當前目錄佔用
 alias now='date "+%Y-%m-%d %H:%M:%S"'          # 顯示當前時間
 alias please='sudo $(history -p !!)'           # 上一個指令加 sudo（超好用）
+
+alias fh='fc -rl 1 | fzf --tac --preview "echo {}" --preview-window=up:3:wrap | awk "{\$1=\"\"; print substr(\$0,2)}" | pbcopy'
 
 
 # BEGIN opam configuration
